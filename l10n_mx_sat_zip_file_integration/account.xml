@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+
+    <!-- Action for Batch Payment -->
+
+        <record id="action_account_cfdi_wizard_zipfile_from_sat_downloader" model="ir.actions.act_window">
+            <field name="name">Procesar ZIP</field>
+            <field name="res_model">account.cfdi.wizard.zipfile</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="context">{'zip_is_ready':True}</field>
+
+        </record>        
+
+
+    <!-- Inherited view for Register Payment as Batch -->
+    <record id="view_account_cfdi_wizard_zipfile_sat_downloader" model="ir.ui.view">
+        <field name="name">account.cfdi.wizard.zipfile.inherited</field>
+        <field name="model">account.cfdi.wizard.zipfile</field>
+        <field name="inherit_id" ref="account_cfdi_audit_zipfile.view_account_cfdi_wizard_zipfile" />
+        <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='zip_file']" position="attributes">
+                <attribute name="invisible">context.get('zip_is_ready', False)</attribute>
+            </xpath>            
+        </field>
+    </record>
+
+
+    <record id="view_account_cfdi_list_sat_downloader" model="ir.ui.view">
+        <field name="name">account.cfdi.list</field>
+        <field name="model">account.cfdi</field>
+        <field name="inherit_id" ref="account_cfdi_audit_zipfile.view_account_cfdi_list" />
+        <field name="arch" type="xml">
+            <field name="folio_fiscal" position="before">
+                <field name="tipo_cfdi" />
+            </field>            
+        </field>
+    </record>
+
+
+
+
+</data>
+</openerp>

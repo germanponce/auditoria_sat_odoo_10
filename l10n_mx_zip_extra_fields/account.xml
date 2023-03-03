@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+
+
+    <record id="view_account_cfdi_list_sat_extra_fields_form" model="ir.ui.view">
+        <field name="name">account.cfdi.extra</field>
+        <field name="model">account.cfdi</field>
+        <field name="inherit_id" ref="account_cfdi_audit_zipfile.view_account_cfdi_form" />
+        <field name="arch" type="xml">
+            <field name="total" position="before">
+                <field name="subtotal_amount" readonly="1" />
+                <field name="iva_amount" readonly="1" />
+            </field>
+            <field name="pay_method" position="replace">
+            </field>
+            <field name="no_certificado" position="before">
+                <field name="serie" readonly="1" />
+                <field name="folio" readonly="1" />
+                <field name="pay_method_id" readonly="1" />
+                <field name="metodo_pago_id" readonly="1" />
+            </field>
+            <notebook position="inside">
+                <page string="Ver datos de la Factura">
+                    <group>
+                        <group string="Emisor">
+                              <field name="nombre_emisor" string="Nombre" readonly="1"/>
+                              <field name="regimen_emisor" string="Regimen Fiscal" readonly="1"/>
+                              <field name="rfc_emisor" string="RFC" readonly="1"/>
+                        </group>
+                        <group string="Receptor">
+                              <field name="nombre_receptor" string="Nombre" readonly="1"/>
+                              <field name="uso_cfdi_receptor" readonly="1"/>
+                              <field name="rfc_receptor" string="RFC" readonly="1"/>
+                        </group>
+                    </group>
+                    <group string="Cabecera CFDI">
+                        <group>
+                            <field name="comprobante_fecha" readonly="1"/>
+                            <field name="folio_documento" readonly="1"/>
+                            <field name="documento_uuid" readonly="1"/>
+                            <field name="metodo_pago" readonly="1"/>
+                            <field name="moneda" readonly="1"/>
+                            <field name="tipo_cambio" readonly="1" string="Tipo de Cambio"/>
+                        </group>
+                        <group>
+                            <field name="fechatimbrado_doc" readonly="1"/>
+                            <field name="serie_documento" readonly="1"/>
+                            <field name="lugar_expedicion" readonly="1"/>
+                            <field name="forma_pago" readonly="1"/>
+                            <field name="total" readonly="1"/>
+                            <field name="subtotal" readonly="1"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Detalle Factura">
+                            <field name="concepto_ids" readonly="1">
+                                <tree string="Conceptos">
+                                    <field name="name" />
+                                    <field name="clave" />
+                                    <field name="unidad" />
+                                    <field name="cantidad" />
+                                    <field name="precio" />
+                                    <field name="impuesto_ids" />
+                                    <field name="total" sum="Total"/>
+                                </tree>
+                                <form string="Concepto">
+                                    <group>
+                                        <field name="name" />
+                                        <field name="clave" />
+                                        <field name="unidad" />
+                                        <field name="cantidad" />
+                                        <field name="precio" />
+                                        <field name="total" />
+                                    </group>
+                                    <group string="Impuestos">
+                                        <field name="impuesto_ids" nolabel="1" readonly="1">
+                                            <tree string="Impuestos">
+                                                <field name="name" />
+                                                <field name="tipo_impuesto" />
+                                                <field name="factor" />
+                                                <field name="tasa_cuota" />
+                                                <field name="base" />
+                                                <field name="importe" />
+                                            </tree>
+                                        </field>
+                                    </group>
+                                </form>
+                            </field>
+                        </page>
+                        <page string="Datos Fiscales">
+                            <group>
+                                <field name="cfdi_cbb" widget="image" options='{"size": [90, 90]}'/>
+
+                                <field name="rfc_pac" readonly="1"/>
+                                <field name="no_certificado_documento" readonly="1"/>
+                                <field name="no_certificado_sat" readonly="1"/>
+                                <field name="certificado_documento_show" readonly="1"/>
+                                <field name="sello_emisor_show" readonly="1"/>
+                                <field name="sello_sat_show" readonly="1"/>
+                                <field name="cadena_original_show" readonly="1" />
+                            </group>
+                        </page>
+                    </notebook>
+                </page>
+            </notebook>
+        </field>
+    </record>
+
+
+    <record id="view_account_cfdi_list_sat_extra_fields_tree" model="ir.ui.view">
+        <field name="name">account.cfdi.extra</field>
+        <field name="model">account.cfdi</field>
+        <field name="inherit_id" ref="account_cfdi_audit_zipfile.view_account_cfdi_list" />
+        <field name="arch" type="xml">
+            <field name="folio_fiscal" position="before">
+                <field name="serie" />
+                <field name="folio" />
+            </field>            
+            <field name="total" position="before">
+                <field name="subtotal_amount" />
+                <field name="iva_amount" />
+            </field>   
+        </field>
+    </record>
+
+    <record id="view_account_cfdi_list_sat_extra_fields_search" model="ir.ui.view">
+        <field name="name">account.cfdi.extra</field>
+        <field name="model">account.cfdi</field>
+        <field name="inherit_id" ref="account_cfdi_audit_zipfile.view_account_cfdi_search" />
+        <field name="arch" type="xml">
+            <field name="folio_fiscal" position="after">
+                <field name="serie" />
+                <field name="folio" />
+                <field name="tipo_cfdi" />
+                <field name="iva_amount" />
+                <field name="subtotal_amount" />
+            </field> 
+                     
+        </field>
+    </record>
+
+
+
+</data>
+</openerp>

@@ -1,0 +1,12 @@
+[Unit]
+Description=Web Service Descarga SAT Odoo 10
+After=network.target
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+User=odoo
+ExecStart=/usr/bin/python3.6 /home/fixdoo/raloy_customs/fixdoo/l10n_mx_auditor_sat/Web_Service_Descarga_SAT.py
+
+[Install]
+WantedBy=multi-user.target

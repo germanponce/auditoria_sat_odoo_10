@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+account_cfdi_concepto_access,account.cfdi.concepto,model_account_cfdi_concepto,,1,1,1,1
+account_cfdi_tax_access,account.cfdi.tax,model_account_cfdi_tax,,1,1,1,1
+account_cfdi_tax_global_access,account.cfdi.tax.global,model_account_cfdi_tax_global,,1,1,1,1

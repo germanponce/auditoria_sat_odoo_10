@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record forcecreate="True" id="ir_cron_reverse_entry" model="ir.cron">
+        <field name="name">Descarga de Paquetes Pendientes XML</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field eval="'cfdi.account.dashboard.manager'" name="model" />
+        <field eval="'_run_download_pending_package_from_sat'" name="function" />
+        <field eval="'()'" name="args" />
+        <field name="user_id" ref="base.user_root" />
+        <field eval="True" name="active" />
+    </record>
+
+</odoo>

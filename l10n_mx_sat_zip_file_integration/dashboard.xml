@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+
+    <record id="cfdi_account_dashboard_manager_form_extension_read" model="ir.ui.view">
+        <field name="name">cfdi.account.dashboard.manager.list</field>
+        <field name="model">cfdi.account.dashboard.manager</field>
+        <field name="inherit_id" ref="l10n_mx_auditor_sat.cfdi_account_dashboard_manager_form" />
+        <field name="arch" type="xml">
+			<field name="is_favorite" position="before">
+				<div class="oe_button_box" name="button_box">
+                    <button type="object" name="action_view_auditor_records" class="oe_stat_button" icon="fa-search" attrs="{'invisible':[('auditoria_count', '=', 0)]}">
+                        <field name="auditoria_count" widget="statinfo" string="CFDI's"/>
+                        <field name="account_cfdis" invisible="1" />
+                    </button>
+                </div>
+                
+			</field>
+            <xpath expr="//button[@name='action_download']" position="after">
+                <button name="action_execute_auditor" type="object" string="Leer y Auditar ZIP" icon="fa-check-square-o"/>
+            </xpath> 
+            
+            <xpath expr="//group[@name='package_pendings']" position="after">
+                <notebook>
+                    <page string="Ingresos" attrs="{'invisible': [('found_cfdis_i','=',False)]}">
+                        <field name="found_cfdis_i" invisible="1" />
+                        <group>
+                            <field name="account_cfdi_i_ids" nolabel="1"/>
+                        </group>
+                    </page>
+                    <page string="Egresos" attrs="{'invisible': [('found_cfdis_e','=',False)]}">
+                        <field name="found_cfdis_e" invisible="1" />
+                        <group>
+                            <field name="account_cfdi_e_ids" nolabel="1"/>
+                        </group>
+                    </page>
+                    <page string="Traslados" attrs="{'invisible': [('found_cfdis_t','=',False)]}">
+                        <field name="found_cfdis_t" invisible="1" />
+                        <group>
+                            <field name="account_cfdi_t_ids" nolabel="1"/>
+                        </group>
+                    </page>
+                    <page string="Nominas" attrs="{'invisible': [('found_cfdis_n','=',False)]}">
+                        <field name="found_cfdis_n" invisible="1" />
+                        <group>
+                            <field name="account_cfdi_n_ids" nolabel="1"/>
+                        </group>
+                    </page>
+                    <page string="Pagos" attrs="{'invisible': [('found_cfdis_p','=',False)]}">
+                        <field name="found_cfdis_p" invisible="1" />
+                        <group>
+                            <field name="account_cfdi_p_ids" nolabel="1"/>
+                        </group>
+                    </page>
+                    <page string="Otros" attrs="{'invisible': [('found_cfdis_o','=',False)]}">
+                        <field name="found_cfdis_o" invisible="1" />
+                        <group>
+                            <field name="account_cfdi_o_ids" nolabel="1"/>
+                        </group>
+                    </page>
+                </notebook>
+            </xpath>            
+        </field>
+    </record>
+
+
+    <menuitem id="menu_cfdi_audit_dashboard_downloader" name="Auditoría CFDIs" parent="l10n_mx_auditor_sat.account_cfdi_auditor_root" sequence="3"/>
+
+        <menuitem action="account_cfdi_audit_zipfile.action_account_cfdi" id="menu_action_account_cfdi_dashaboard_downloader" 
+                  parent="menu_cfdi_audit_dashboard_downloader" sequence="1"/>
+        <menuitem action="account_cfdi_audit_zipfile.action_account_cfdi_wizard_zipfile" id="menu_action_account_cfdi_wizard_dashaboard_downloader" 
+                  parent="menu_cfdi_audit_dashboard_downloader" sequence="2"/>
+
+</data>
+</openerp>

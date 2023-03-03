@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="view_account_auditor_descarga_sat_fiel_conf" model="ir.ui.view">
+            <field name="name">account.config.settings.descarga sat</field>
+            <field name="model">account.config.settings</field>
+            <field name="inherit_id" ref="account.view_account_config_settings"/>
+            <field name="arch" type="xml">
+                <group name="followup" position="after">
+                    <group string="Configuracion Descarga Masiva SAT" name="descarga_sat">
+                        <label string="FIEL (Seleccione los Archivos Electronicos de su Firma Electronica)"/>
+                        <div>
+                            <p>Cer, Key y Contraseña.</p>
+                        </div>
+                        <div>
+                            <div>
+                                <label for="certificate_file"/>
+                                <field name="certificate_file" class="oe_inline"/>
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+                                <label for="certificate_key_file"/>
+                                <field name="certificate_key_file" class="oe_inline"/>
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+                                <label for="certificate_password"/>
+                                <field name="certificate_password" class="oe_inline" password="1"/>
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+                                <label for="download_automatically"/>
+                                <field name="download_automatically" class="oe_inline"/>
+                            </div>
+                        </div>
+                        <!-- Datos Invisibles -->
+                        <div>
+                            <div>
+                                <label for="certificate_file_pem"/>
+                                <field name="certificate_file_pem" class="oe_inline" />
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+                                <label for="certificate_key_file_pem"/>
+                                <field name="certificate_key_file_pem" class="oe_inline"/>
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+                                <label for="certificate_pfx_file"/>
+                                <field name="certificate_pfx_file" class="oe_inline" />
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+                                <label for="fiel_serial_number"/>
+                                <field name="fiel_serial_number" class="oe_inline"/>
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+                                <label for="fiel_date_start"/>
+                                <field name="fiel_date_start" class="oe_inline" />
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+                                <label for="fiel_date_end"/>
+                                <field name="fiel_date_end" class="oe_inline"/>
+                            </div>
+                        </div>
+                    </group>
+                </group>
+            </field>
+        </record>
+    </data>
+</openerp>

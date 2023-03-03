@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+account_cfdi_manager,account.cfdi,model_account_cfdi,,1,1,1,1
+account_cfdi_wizard_zipfile_manager,account.cfdi.wizard.zipfile,model_account_cfdi_wizard_zipfile,,1,1,1,1
+account_cfdi_wizard_audit_manager,account.cfdi.wizard.audit,model_account_cfdi_wizard_audit,,1,1,1,1
